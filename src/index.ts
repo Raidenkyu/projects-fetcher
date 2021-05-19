@@ -14,12 +14,12 @@ const fetchProjects = async () => {
   await storage.init();
 
   if (!existsSync('./projects.csv')) {
-    writeFileSync('./projects.csv', "name;count;url");
+    writeFileSync('./projects.csv', "name;count;url;status;generation;build");
   }
 
   const projectsFileContent = readFileSync('./projects.csv', { encoding: 'utf8', flag: 'r' }).toString();
 
-  const response = await axios.get('https://api.github.com/search/repositories?q=language%3Ajavascript+language%3Apython');
+  const response = await axios.get('https://api.github.com/search/repositories?q=language%3Ajavascript+language%3Apython&per_page=100');
   const items = response.data.items;
 
   let notFound = true;
@@ -37,7 +37,7 @@ const fetchProjects = async () => {
         const dockerfileCount = await searchDockerfile(projectName);
 
         if (dockerfileCount > 0) {
-          appendFileSync('./projects.csv', `${projectName};${dockerfileCount};${elem.html_url}\n`);
+          appendFileSync('./projects.csv', `${projectName};${dockerfileCount};${elem.html_url};null;null;null\n`);
           notFound = false;
           console.log(`Project ${projectName} includes a Dockerfile`);
         }
