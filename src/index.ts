@@ -2,6 +2,7 @@ import axios from 'axios';
 import storage from 'node-persist';
 import { writeFileSync, appendFileSync, readFileSync, existsSync } from 'fs';
 import _ from 'lodash';
+import { measureMemory } from 'node:vm';
 
 const searchDockerfile = async (projectName: string) => {
   const args = projectName.split('/');
@@ -19,12 +20,13 @@ const fetchProjects = async () => {
 
   const projectsFileContent = readFileSync('./projects.csv', { encoding: 'utf8', flag: 'r' }).toString();
 
-  const response = await axios.get('https://api.github.com/search/repositories?q=language%3Ajavascript+language%3Apython&per_page=100');
-  const items = response.data.items;
-
-  let notFound = true;
-
   try {
+
+    const response = await axios.get('https://api.github.com/search/repositories?q=language%3Ajavascript+language%3Apython&per_page=100');
+    const items = response.data.items;
+
+    let notFound = true;
+
     do {
       const elem = _.sample(items);
       const projectName = elem.full_name;
@@ -50,8 +52,11 @@ const fetchProjects = async () => {
       }
     } while (notFound);
   } catch (e) {
-    console.log(e);
-    console.log("Hourly limit exceeded");
+    const message = e.response?.data?.message ||
+      e.message ||
+      "Failed to obtain an answer from Github";
+
+    console.log(`%cError: %c ${message}`, 'color: red', 'color: blue');
   }
 
   return;
