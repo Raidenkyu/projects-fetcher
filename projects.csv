@@ -7,7 +7,7 @@ nylas/nylas-mail;1;https://github.com/nylas/nylas-mail;discarded;null;null
 home-assistant/core;2;https://github.com/home-assistant/core;discarded;null;null
 DIYgod/RSSHub;1;https://github.com/DIYgod/RSSHub;accepted;successful;worked
 sequelize/sequelize;1;https://github.com/sequelize/sequelize;discarded;null;null
-goldbergyoni/nodebestpractices;5;https://github.com/goldbergyoni/nodebestpractices;needed-compilation
+goldbergyoni/nodebestpractices;5;https://github.com/goldbergyoni/nodebestpractices;accepted;successful;require-extra-steps
 quantopian/zipline;2;https://github.com/quantopian/zipline;accepted;failed;null
 nicolargo/glances;4;https://github.com/nicolargo/glances;accepted;successful;worked
 kevana/ui-for-docker;3;https://github.com/kevana/ui-for-docker;discarded;null;null
