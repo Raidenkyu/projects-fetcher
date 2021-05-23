@@ -56,7 +56,7 @@ const fetchProjects = async () => {
       e.message ||
       "Failed to obtain an answer from Github";
 
-    console.log('\x1b[31m%s\x1b[0m', 'ERROR', `: ${message}`);
+    console.log('\x1b[31m%s\x1b[0m', 'ERROR:', message);
   }
 
   return;
