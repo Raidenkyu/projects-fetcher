@@ -15,7 +15,7 @@ const fetchProjects = async () => {
   await storage.init();
 
   if (!existsSync('./projects.csv')) {
-    writeFileSync('./projects.csv', "name;count;url;status;generation;build");
+    writeFileSync('./projects.csv', "name;count;url;status;build");
   }
 
   const projectsFileContent = readFileSync('./projects.csv', { encoding: 'utf8', flag: 'r' }).toString();
@@ -39,7 +39,7 @@ const fetchProjects = async () => {
         const dockerfileCount = await searchDockerfile(projectName);
 
         if (dockerfileCount > 0) {
-          appendFileSync('./projects.csv', `${projectName};${dockerfileCount};${elem.html_url};null;null;null\n`);
+          appendFileSync('./projects.csv', `${projectName};${dockerfileCount};${elem.html_url};null;null\n`);
           notFound = false;
           console.log(`Project ${projectName} includes a Dockerfile`);
         }
