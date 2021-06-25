@@ -75,4 +75,4 @@ openstf/stf;4;https://github.com/openstf/stf;accepted;failed-build
 liftoff/GateOne;1;https://github.com/liftoff/GateOne;discarded;null
 schollz/howmanypeoplearearound;1;https://github.com/schollz/howmanypeoplearearound;accepted;failed-build
 horovod/horovod;5;https://github.com/horovod/horovod;discarded;null
-mailpile/Mailpile;3;https://github.com/mailpile/Mailpile;accepted;failed
+mailpile/Mailpile;3;https://github.com/mailpile/Mailpile;accepted;failed-build
